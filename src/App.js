@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import hot from './assets/hot.png'
+import cold from './assets/cold.png'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app" style={{backgroundImage: `url(${hot})`}}>
+      <div className='overlay'>
+        <div className='container'>
+          <div className='section section_inputs'>
+            <input type='text' name='city' placeholder='Enter City Here...'/>
+            <button>°F</button>
+          </div>
+          <div className='section section_temperature'>
+            <div>
+              <h3>hello?</h3>
+              <img alt='placeholder'></img>
+              <h3>cloudy</h3>
+            </div>
+            <div className='temp'>
+              <h2>72</h2>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
     </div>
   );
 }
