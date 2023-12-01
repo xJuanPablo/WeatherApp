@@ -1,22 +1,31 @@
 import hot from './assets/hot.png';
 import cold from './assets/cold.png';
 import Descriptions from './components/Descriptions/Descriptions';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { formatData } from './weatherService';
 
 function App() {
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState('imperial');
+  const [city, setCity] = useState('new york city');
+  const [background, setBackground] = useState(cold)
 
   
   useEffect(() => {
     const fetchData = async () => {
-      const data = await formatData('belton', units);
+      const data = await formatData(city, units);
       setWeather(data);
+
+      const bgChange = units === 'metric' ? 20 : 60;
+      if (data.temp <= bgChange){
+        setBackground(cold)
+      } else {
+        setBackground(hot)
+      }
     };
 
     fetchData();
-  }, [units]);
+  }, [units, city]);
 
   const unitClick = (e) => {
     const btn = e.currentTarget;
@@ -24,19 +33,25 @@ function App() {
     const Farenheight = currentUnit === 'F';
     btn.innerText = Farenheight ? '°C' : '°F';
     setUnits(Farenheight ? 'imperial' : 'metric')
+  }
 
+  const enterKey = (e) => {
+    if (e.keyCode === 13){
+      setCity(e.currentTarget.value);
+      e.currentTarget.blur()
+    }
   }
 
 
   return (
-    <div className="app" style={{backgroundImage: `url(${cold})`}}>
+    <div className="app" style={{backgroundImage: `url(${background})`}}>
       <div className='overlay'>
         {
           weather && (
             <div className='container'>
             <div className='section section_inputs'>
-              <input type='text' name='city' placeholder='Enter City Here...'/>
-              <button onClick={(e) => unitClick(e)}>°F</button>
+              <input onKeyDown={enterKey} type='text' name='city' placeholder='Enter City Here...'/>
+              <button onClick={(e) => unitClick(e)}>°C</button>
             </div>
             <div className='section section_temperature'>
               <div className='icon'>
