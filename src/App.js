@@ -1,7 +1,7 @@
 import hot from './assets/hot.png';
 import cold from './assets/cold.png';
 import Descriptions from './components/Descriptions/Descriptions';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatData } from './weatherService';
 
 function App() {
