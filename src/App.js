@@ -3,6 +3,7 @@ import cold from './assets/cold.png';
 import Descriptions from './components/Descriptions/Descriptions';
 import { useEffect, useState } from 'react';
 import { formatData } from './weatherService';
+import Footer from './components/Footer';
 
 function App() {
   const [weather, setWeather] = useState(null);
@@ -68,6 +69,7 @@ function App() {
           )
         }
       </div>
+      <Footer />
     </div>
   );
 };
