@@ -1,8 +1,8 @@
 import React from 'react';
 import './descriptions.css'
-import {FaArrowDown, FaArrowUp, FaWind} from "react-icons/fa";
+import {FaWind} from "react-icons/fa";
 import {BiHappy} from "react-icons/bi";
-import {MdCompress, MdOutlineWaterDrop} from "react-icons/md";
+import {MdOutlineWaterDrop} from "react-icons/md";
 
 const Descriptions = ({weather, units}) => {
 
@@ -12,41 +12,20 @@ const Descriptions = ({weather, units}) => {
   const descriptionInfo = [
     {
       id: 1,
-      icon: <FaArrowDown/>,
-      title: 'min',
-      data: weather.temp_min.toFixed(),
-      unit: tempUnit
-    },
-    {
-      id: 2,
-      icon: <FaArrowUp/>,
-      title: 'max',
-      data: weather.temp_max.toFixed(),
-      unit: tempUnit
-    },
-    {
-      id: 3,
       icon: <BiHappy/>,
       title: 'Feels Like',
       data: weather.feels_like.toFixed(),
       unit: tempUnit
     },
     {
-      id: 4,
-      icon: <MdCompress/>,
-      title: 'pressure',
-      data: weather.pressure,
-      unit: 'hpa'
-    },
-    {
-      id: 5,
+      id: 2,
       icon: <MdOutlineWaterDrop/>,
       title: 'humidity',
       data: weather.humidity,
       unit: '%'
     },
     {
-      id: 6,
+      id: 3,
       icon: <FaWind/>,
       title: 'wind speed',
       data: weather.speed.toFixed(),
